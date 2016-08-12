@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 30DaysObjc
 
 ##Hello open source community
@@ -9,3 +10,6 @@ Althought Swift is hot right now and I actually start to learn Swift in the begi
 
 I have seen a lot of great works and inspired by [allenwong's 30DaysofSwift](https://github.com/allenwong/30DaysofSwift), so I would like to do a similiar project called 30DaysObjc.
 
+=======
+# 30DaysOBJC
+>>>>>>> 9027dc0219bec6140fc138054065744e5c542e01
