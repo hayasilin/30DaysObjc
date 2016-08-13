@@ -15,11 +15,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="XNA-cL-2YK">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="440"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-A2-gdm">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="440"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5u-Lx-f6R">
                             <rect key="frame" x="8" y="8" width="398" height="30"/>
