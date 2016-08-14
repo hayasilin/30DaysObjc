@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Steve" translatesAutoresizingMaskIntoConstraints="NO" id="2tR-Jg-CAW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OUh-6L-SDb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NOh-qZ-N99">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2tR-Jg-CAW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="03x-dA-3E7"/>
+                            <constraint firstAttribute="trailing" secondItem="2tR-Jg-CAW" secondAttribute="trailing" id="B4s-sH-LdQ"/>
+                            <constraint firstAttribute="trailing" secondItem="OUh-6L-SDb" secondAttribute="trailing" id="EKA-3K-yUL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2tR-Jg-CAW" secondAttribute="bottom" id="OW0-vl-PmQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OUh-6L-SDb" secondAttribute="bottom" id="V1E-qM-CN3"/>
+                            <constraint firstItem="OUh-6L-SDb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="abs-mg-zm3"/>
+                            <constraint firstItem="OUh-6L-SDb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bvv-l4-buJ"/>
+                            <constraint firstItem="2tR-Jg-CAW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="p9o-Dh-VRg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="360" y="349"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Steve" width="320" height="320"/>
+    </resources>
+</document>
