@@ -17,6 +17,12 @@
 @property (nonatomic) FBSDKLoginButton *loginButton;
 @property (nonatomic) UIButton *myFBLoginButton;
 @property (nonatomic) UIButton *myFBLogoutButton;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *fbUsername;
+@property (weak, nonatomic) IBOutlet UILabel *fbEmail;
+@property (weak, nonatomic) IBOutlet UILabel *fbUserID;
+
 @end
 
 @implementation ViewController
@@ -64,6 +70,8 @@
         [self.view addSubview:sendButton];
     }
 //    [FBSDKMessageDialog showWithContent:sendContent delegate:nil];
+    
+    [self createMyLoginButton];
     
 }
 
@@ -116,6 +124,7 @@
              [self.view addSubview:self.myFBLogoutButton];
          }
      }];
+    
 }
 
 - (void)logoutButtonClicked{
@@ -127,13 +136,65 @@
     [self createMyLoginButton];
 }
 
+- (void)fbOfficialToGetUserInfo{
+}
+
 #pragma mark - FBSDKLoginButtonDelegate
 - (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error{
     NSLog(@"didCompleteWithResult");
+    
+    __block NSString *username;
+    __block NSString *email;
+    __block NSString *userID;
+    
+    if (!error) {
+        NSLog(@"result = %@", result);
+        
+        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"name,email" forKey:@"fields"];
+        
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id,name,birthday,about,age_range,bio,email,gender,hometown"} tokenString:result.token.tokenString version:nil HTTPMethod:@"GET"]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+            
+            NSLog(@"result = %@", result);
+            NSDictionary *resultDicts = (NSDictionary *)result;
+            username = [resultDicts objectForKey:@"name"];
+            self.fbUsername.text = username;
+            email = [resultDicts objectForKey:@"email"];
+            self.fbEmail.text = email;
+            userID = [resultDicts objectForKey:@"id"];
+            self.fbUserID.text = userID;
+            
+            //Get FB user profile image
+            FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:[NSString stringWithFormat:@"me/picture?type=large&redirect=false"] parameters:nil HTTPMethod:@"GET"];
+            
+            [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                                  id result,
+                                                  NSError *error) {
+                if (!error){
+                    NSLog(@"result: %@",result);}
+                else {
+                    NSLog(@"result: %@",[error description]);
+                }}];
+            
+            //Another way to get fb user profile image, userID = the facebook user id
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", userID]];
+            NSLog(@"pictureURL = %@", pictureURL);
+            NSData *imageData = [NSData dataWithContentsOfURL:pictureURL];
+            UIImage *fbImage = [UIImage imageWithData:imageData];
+            
+            self.imageView.image = fbImage;
+            
+        }];
+    }
 }
 
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
     NSLog(@"loginButtonDidLogOut");
+    
+    self.imageView.image = nil;
+    self.fbUsername.text = @"";
+    self.fbEmail.text = @"";
+    self.fbUserID.text = @"";
 }
 
 - (BOOL)loginButtonWillLogin:(FBSDKLoginButton *)loginButton{
