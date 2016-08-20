@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hyperspace - iPhone" translatesAutoresizingMaskIntoConstraints="NO" id="EGI-At-Czc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Lr-EX-gQU">
+                                <rect key="frame" x="175" y="421" width="250" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.26419853710000002" blue="0.85104491319999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="F6f-vK-uq1"/>
+                                    <constraint firstAttribute="height" constant="44" id="xC3-p5-Qpe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" red="0.40182891799999998" green="1" blue="0.81077250199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AOQ-Io-qvx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bingo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uJ-0p-U5r">
+                                <rect key="frame" x="252" y="491" width="96" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="hqP-PX-eIx"/>
+                                    <constraint firstAttribute="height" constant="21" id="pHS-gG-N24"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVq-Ia-6zn">
+                                <rect key="frame" x="0.0" y="131" width="600" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EGI-At-Czc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2Es-Di-KND"/>
+                            <constraint firstItem="0Lr-EX-gQU" firstAttribute="top" secondItem="qVq-Ia-6zn" secondAttribute="bottom" constant="74" id="DRp-8c-EIg"/>
+                            <constraint firstAttribute="trailing" secondItem="EGI-At-Czc" secondAttribute="trailing" id="Lc7-Tz-G7n"/>
+                            <constraint firstItem="EGI-At-Czc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TdH-H1-JIk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EGI-At-Czc" secondAttribute="bottom" id="Yt7-HJ-Z6H"/>
+                            <constraint firstItem="qVq-Ia-6zn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ZCF-nE-s89"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qVq-Ia-6zn" secondAttribute="bottom" constant="253" id="arS-S7-mLN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qVq-Ia-6zn" secondAttribute="trailing" constant="-20" id="cd8-i2-6Fa"/>
+                            <constraint firstItem="4uJ-0p-U5r" firstAttribute="top" secondItem="0Lr-EX-gQU" secondAttribute="bottom" constant="26" id="dTY-hI-xx4"/>
+                            <constraint firstItem="0Lr-EX-gQU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lAc-29-RRz"/>
+                            <constraint firstItem="4uJ-0p-U5r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p2C-ue-8PP"/>
+                            <constraint firstItem="qVq-Ia-6zn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="111" id="rpW-BV-qfG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bingoLabel" destination="4uJ-0p-U5r" id="xxa-nC-BV0"/>
+                        <outlet property="goButton" destination="0Lr-EX-gQU" id="lMT-Y0-cUx"/>
+                        <outlet property="slotPickerView" destination="qVq-Ia-6zn" id="MBM-52-Pum"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340" y="349"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Hyperspace - iPhone" width="1242" height="2208"/>
+    </resources>
+</document>
