@@ -24,26 +24,16 @@
     UIViewController *fromScreen = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toScreen = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-//    MenuViewController *menuViewController = self.presenting ? (MenuViewController *)fromScreen : (MenuViewController *)toScreen;
-//    UIViewController *bottomViewController = self.presenting ? toScreen : fromScreen;
+    //bottomViewController不一定需要實做，可有可無
+    UIViewController *bottomViewController = self.presenting ? fromScreen : toScreen;
     
-    MenuViewController *menuViewController = self.presenting ? (MenuViewController *)fromScreen : (MenuViewController *)toScreen;
+    MenuViewController *menuVC = self.presenting ? (MenuViewController *)toScreen : (MenuViewController *)fromScreen;
     
-    MenuViewController *bottomViewController = self.presenting ? (MenuViewController *)toScreen : (MenuViewController *)fromScreen;
-
-    
-    NSLog(@"bottomViewController = %@", bottomViewController);
-    if ([bottomViewController isKindOfClass:[MenuViewController class]]) {
-        NSLog(@"menuViewController");
-    }else{
-        NSLog(@"NO");
-    }
-    
-    UIView *menuView = menuViewController.view;
     UIView *bottomView = bottomViewController.view;
+    UIView *menuView = menuVC.view;
     
     if (self.presenting) {
-        [self offStageMenuController:bottomViewController];
+        [self offStageMenuController:menuVC];
     }
     
     [container addSubview:bottomView];
@@ -55,11 +45,11 @@
         
         if (self.presenting)
         {
-            [self onStageMenuController:bottomViewController];
+            [self onStageMenuController:menuVC];
         }
         else
         {
-            [self offStageMenuController:bottomViewController];
+            [self offStageMenuController:menuVC];
         }
         
     } completion:^(BOOL finished) {
@@ -85,22 +75,16 @@
     
     menuViewController.textButton.transform = [self offstage:-topRowOffset];
     menuViewController.textLabel.transform = [self offstage:-topRowOffset];
-
     menuViewController.quoteButton.transform = [self offstage:-middleRowOffset];
     menuViewController.quoteLabel.transform = [self offstage:-middleRowOffset];
-
     menuViewController.chatButton.transform = [self offstage:-bottomRowOffset];
     menuViewController.chatLabel.transform = [self offstage:-bottomRowOffset];
-
     menuViewController.photoButton.transform = [self offstage:topRowOffset];
     menuViewController.photoLabel.transform = [self offstage:topRowOffset];
-
     menuViewController.linkButton.transform = [self offstage:middleRowOffset];
     menuViewController.linkLabel.transform = [self offstage:middleRowOffset];
-
     menuViewController.audioButton.transform = [self offstage:bottomRowOffset];
     menuViewController.audioLabel.transform = [self offstage:bottomRowOffset];
-
 }
 
 - (void)onStageMenuController:(MenuViewController *)menuViewController
