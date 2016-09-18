@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ouf-cQ-OJv">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fjc-DH-2Qh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eiK-dO-Wob"/>
+                                </connections>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLk-WA-Lpm">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Find it" id="2Qz-yf-gpd">
+                                        <connections>
+                                            <action selector="findIt:" destination="BYZ-38-t0r" id="F69-b7-5fd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fjc-DH-2Qh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="07J-vr-8o1"/>
+                            <constraint firstItem="fjc-DH-2Qh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2hO-s1-M86"/>
+                            <constraint firstAttribute="trailing" secondItem="fjc-DH-2Qh" secondAttribute="trailing" id="wIR-Uo-7VR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fjc-DH-2Qh" secondAttribute="bottom" id="x9o-ny-57R"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="i0w-6W-6R0">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="現在位置" id="jr1-UM-T6u">
+                            <connections>
+                                <action selector="currentLocationAction:" destination="BYZ-38-t0r" id="AZJ-Np-4am"/>
+                            </connections>
+                        </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XtG-ez-Bdf">
+                            <rect key="frame" x="82" y="7" width="212" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Standard"/>
+                                <segment title="Satellite"/>
+                                <segment title="Hybrid"/>
+                            </segments>
+                            <connections>
+                                <action selector="setMap:" destination="BYZ-38-t0r" eventType="valueChanged" id="fw8-xs-GOa"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="分享" id="ek6-ak-5jn">
+                            <connections>
+                                <action selector="shareLocationAction:" destination="BYZ-38-t0r" id="kfR-Pa-E3i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="mapView" destination="fjc-DH-2Qh" id="SDe-Ii-ZfN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809.5" y="348.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s6v-xK-Hhi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ouf-cQ-OJv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BUT-ms-K2W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="SXg-Zw-yZh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d9K-tV-sRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="339" y="349"/>
+        </scene>
+    </scenes>
+</document>
