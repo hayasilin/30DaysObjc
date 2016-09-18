@@ -15,9 +15,6 @@
 		AC35B19C1CBBD9D100C8C0FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC35B19A1CBBD9D100C8C0FF /* LaunchScreen.storyboard */; };
 		AC35B1A71CBBD9D100C8C0FF /* spotifyVideoBackgroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC35B1A61CBBD9D100C8C0FF /* spotifyVideoBackgroundTests.m */; };
 		AC35B1B21CBBD9D100C8C0FF /* spotifyVideoBackgroundUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC35B1B11CBBD9D100C8C0FF /* spotifyVideoBackgroundUITests.m */; };
-		AC35B1C21CBBDA1500C8C0FF /* videoCutter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC35B1C11CBBDA1500C8C0FF /* videoCutter.m */; };
-		AC35B1C61CBBDA3400C8C0FF /* VideoSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC35B1C41CBBDA3400C8C0FF /* VideoSplashViewController.m */; };
-		AC35B1C71CBBDA3400C8C0FF /* VideoSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC35B1C51CBBDA3400C8C0FF /* VideoSplashViewController.xib */; };
 		AC35B1CB1CBBDA6300C8C0FF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC35B1C91CBBDA6300C8C0FF /* HomeViewController.m */; };
 		AC35B1CC1CBBDA6300C8C0FF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC35B1CA1CBBDA6300C8C0FF /* HomeViewController.xib */; };
 		ACD7E7D41CCC72E900FA51B0 /* moments.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = ACD7E7D31CCC72E900FA51B0 /* moments.mp4 */; };
@@ -57,11 +54,6 @@
 		AC35B1AD1CBBD9D100C8C0FF /* spotifyVideoBackgroundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spotifyVideoBackgroundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC35B1B11CBBD9D100C8C0FF /* spotifyVideoBackgroundUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spotifyVideoBackgroundUITests.m; sourceTree = "<group>"; };
 		AC35B1B31CBBD9D100C8C0FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC35B1C01CBBDA1500C8C0FF /* videoCutter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = videoCutter.h; sourceTree = "<group>"; };
-		AC35B1C11CBBDA1500C8C0FF /* videoCutter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = videoCutter.m; sourceTree = "<group>"; };
-		AC35B1C31CBBDA3400C8C0FF /* VideoSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoSplashViewController.h; sourceTree = "<group>"; };
-		AC35B1C41CBBDA3400C8C0FF /* VideoSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoSplashViewController.m; sourceTree = "<group>"; };
-		AC35B1C51CBBDA3400C8C0FF /* VideoSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoSplashViewController.xib; sourceTree = "<group>"; };
 		AC35B1C81CBBDA6300C8C0FF /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		AC35B1C91CBBDA6300C8C0FF /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		AC35B1CA1CBBDA6300C8C0FF /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -100,11 +92,6 @@
 				AC35B1C81CBBDA6300C8C0FF /* HomeViewController.h */,
 				AC35B1C91CBBDA6300C8C0FF /* HomeViewController.m */,
 				AC35B1CA1CBBDA6300C8C0FF /* HomeViewController.xib */,
-				AC35B1C31CBBDA3400C8C0FF /* VideoSplashViewController.h */,
-				AC35B1C41CBBDA3400C8C0FF /* VideoSplashViewController.m */,
-				AC35B1C51CBBDA3400C8C0FF /* VideoSplashViewController.xib */,
-				AC35B1C01CBBDA1500C8C0FF /* videoCutter.h */,
-				AC35B1C11CBBDA1500C8C0FF /* videoCutter.m */,
 				AC35B18B1CBBD9D100C8C0FF /* spotifyVideoBackground */,
 				AC35B1A51CBBD9D100C8C0FF /* spotifyVideoBackgroundTests */,
 				AC35B1B01CBBD9D100C8C0FF /* spotifyVideoBackgroundUITests */,
@@ -272,7 +259,6 @@
 				AC35B1CC1CBBDA6300C8C0FF /* HomeViewController.xib in Resources */,
 				ACD7E7D41CCC72E900FA51B0 /* moments.mp4 in Resources */,
 				AC35B1971CBBD9D100C8C0FF /* Main.storyboard in Resources */,
-				AC35B1C71CBBDA3400C8C0FF /* VideoSplashViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +285,6 @@
 			files = (
 				AC35B1941CBBD9D100C8C0FF /* ViewController.m in Sources */,
 				AC35B1911CBBD9D100C8C0FF /* AppDelegate.m in Sources */,
-				AC35B1C61CBBDA3400C8C0FF /* VideoSplashViewController.m in Sources */,
-				AC35B1C21CBBDA1500C8C0FF /* videoCutter.m in Sources */,
 				AC35B18E1CBBD9D100C8C0FF /* main.m in Sources */,
 				AC35B1CB1CBBDA6300C8C0FF /* HomeViewController.m in Sources */,
 			);

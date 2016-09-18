@@ -10,8 +10,6 @@
 
 @interface HomeViewController ()
 
-// Comment A. Another label and button added to the class without adding them to the
-// storyboard
 @property (nonatomic, strong) UIButton *firstButton;
 @property (nonatomic, strong) UILabel *mylabel;
 
@@ -19,12 +17,11 @@
 
 @implementation HomeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    //[self.view.layer addSublayer:self.playerLayer];
-    ;
     
-    UIView *controllerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIView *controllerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     controllerView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:controllerView];
     
@@ -39,7 +36,6 @@
     [self.firstButton addTarget:self action:@selector(theAction:) forControlEvents:UIControlEventTouchUpInside];
     [controllerView addSubview:self.firstButton];
     
-    
     // loop movie
     self.playerLayer.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -48,19 +44,20 @@
                                                object:nil];
 }
 
-- (void)theAction:(id)sender {
-    
+- (void)theAction:(id)sender
+{
     NSLog(@"Button Tapped");
 }
 
--(AVPlayerLayer*)playerLayer{
-    if(!_playerLayer){
+-(AVPlayerLayer*)playerLayer
+{
+    if(!_playerLayer)
+    {
         // find movie file
         NSURL *moviePath = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource: @"moments" ofType:@"mp4"]];
         _playerLayer = [AVPlayerLayer playerLayerWithPlayer:[[AVPlayer alloc]initWithURL:moviePath]];
-        _playerLayer.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
+        _playerLayer.frame = CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         [_playerLayer.player play];
-        
     }
     return _playerLayer;
 }
@@ -70,20 +67,5 @@
     AVPlayerItem *repeatPlayer = [notification object];
     [repeatPlayer seekToTime:kCMTimeZero];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
