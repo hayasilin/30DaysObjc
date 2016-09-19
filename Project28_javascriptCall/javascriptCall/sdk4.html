@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            
+        function callObjFunction()
+        {
+        
+        window.location  = 'js-call:runObjMethod:';
+            
+        }
+        
+        //Send back
+        function jsFunction(str)
+        {
+            alert("this is javascript alert! -> obj2 pass value to js show:" + str);
+        }
+        
+        //Flashlight
+        function turnFlashlightOn()
+        {
+            window.location = 'flashSwitch://?state=1';
+        }
+        
+        function turnFlashlightOff()
+        {
+            window.location = 'flashSwitch://?state=0';
+        }
+        
+        function flashEffect()
+        {
+            window.location = 'flashEffect://?interval=0.5&times=10';
+        }
+        
+        //Microphone
+        function turnMicrophoneOn()
+        {
+            window.location = 'microphoneSwitch://?state=1';
+        }
+        
+        function turnMicrophoneOff()
+        {
+            window.location = 'microphoneSwitch://?state=0';
+        }
+        
+        function maxDecibel()
+        {
+            window.location = 'maxDecibel://?second=5';
+        }
+        
+        function isOverDecibel()
+        {
+            window.location = 'isOverDecibel://?second=5&decibelValue=30';
+        }
+
+        //Call back
+        function maxDecibelCallback(str)
+        {
+            alert("maxDecibelCallback:" + str);
+        }
+        
+        function isOverDecibelCallback(str)
+        {
+            alert("isOverDecibelCallback:" + str);
+        }
+
+       </script>
+    </head>
+
+    <body>
+        <p>
+            Hello World!
+        </p>
+        <p>
+            <button onclick="callObjFunction()">call obj function</button>
+        </p>
+        <p>
+            <button onclick="turnFlashlightOn()">Turn flashlight on</button>
+        </p>
+        <p>
+            <button onclick="turnFlashlightOff()">Turn flashlight off</button>
+        </p>
+        <p>
+            <button onclick="flashEffect()">Turn flashlight on with time interval</button>
+        </p>
+        <p>
+            Microphone
+        </p>
+        <p>
+            <button onclick="turnMicrophoneOn()">Turn microphone on</button>
+        </p>
+        <p>
+            <button onclick="turnMicrophoneOff()">Turn microphone off</button>
+        </p>
+        <p>
+            <button onclick="maxDecibel()">Get max Decibel</button>
+        </p>
+        <p>
+            <button onclick="isOverDecibel()">Is over decibel</button>
+        </p>
+        
+    </body>
+</html>
