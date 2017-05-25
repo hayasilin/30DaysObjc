@@ -130,6 +130,7 @@
 				TargetAttributes = {
 					ACE467E61D8A69A7004ACAF6 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = G62233X968;
 					};
 				};
 			};
@@ -287,6 +288,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G62233X968;
 				INFOPLIST_FILE = TumblrMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cracktheterm.www.TumblrMenu;
@@ -298,6 +300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G62233X968;
 				INFOPLIST_FILE = TumblrMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cracktheterm.www.TumblrMenu;
@@ -324,6 +327,7 @@
 				ACE468001D8A69A7004ACAF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

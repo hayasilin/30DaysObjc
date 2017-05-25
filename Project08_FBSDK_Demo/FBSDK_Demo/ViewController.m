@@ -14,21 +14,28 @@
 @interface ViewController () <FBSDKLoginButtonDelegate>
 
 @property (nonatomic) FBSDKLoginManager *fbLoginManager;
-@property (nonatomic) FBSDKLoginButton *loginButton;
-@property (nonatomic) UIButton *myFBLoginButton;
+@property (nonatomic) FBSDKLoginButton *loginButton;//FB的Login button
+
+@property (nonatomic) UIButton *myFBLoginButton;//客製化的login button
 @property (nonatomic) UIButton *myFBLogoutButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *fbUsername;
 @property (weak, nonatomic) IBOutlet UILabel *fbEmail;
 @property (weak, nonatomic) IBOutlet UILabel *fbUserID;
+@property (weak, nonatomic) IBOutlet UILabel *gender;
+@property (weak, nonatomic) IBOutlet UILabel *birthday;
 
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 1000);
     
     self.loginButton = [[FBSDKLoginButton alloc] init];
     self.loginButton.delegate = self;
@@ -75,7 +82,8 @@
     
 }
 
-- (void)createMyLoginButton{
+- (void)createMyLoginButton
+{
     // Add a custom login button to your app
     self.myFBLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.myFBLoginButton.backgroundColor=[UIColor darkGrayColor];
@@ -97,16 +105,44 @@
 {
     self.fbLoginManager = [[FBSDKLoginManager alloc] init];
     
-    [self.fbLoginManager
-     logInWithReadPermissions: @[@"public_profile"]
-     fromViewController:self
-     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-         if (error) {
+    [self.fbLoginManager logInWithReadPermissions: @[@"public_profile", @"user_friends"]
+                               fromViewController:self
+                                          handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error)
+         {
              NSLog(@"Process error");
-         } else if (result.isCancelled) {
+         }
+         else if (result.isCancelled)
+         {
              NSLog(@"Cancelled");
-         } else {
+         }
+         else
+         {
              NSLog(@"Logged in");
+             
+             //birthday需要通過fb審查，因此先不使用
+             FBSDKGraphRequest *request =
+             [[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+                                               parameters:@{@"fields" : @"name, gender, email, birthday"}
+                                               HTTPMethod:@"GET"];
+             
+             [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                
+                 NSString *fbID = [result objectForKey:@"id"];
+                 NSString *name = [[result objectForKey:@"name"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                 NSString *gender = [result objectForKey:@"gender"];
+                 NSString *email = [result objectForKey:@"email"];
+                 NSString *birthday = [result objectForKey:@"birthday"];
+                 
+                 NSLog(@"fbID = %@ \n name = %@ \n gender = %@ \n email = %@ \n birthday = %@", fbID, name, gender, email, birthday);
+                 
+                 self.fbUserID.text = fbID;
+                 self.fbUsername.text = name;
+                 self.gender.text = gender;
+                 self.fbEmail.text = email;
+                 self.birthday.text = birthday;
+             }];
+             
              
              [self.myFBLoginButton removeFromSuperview];
              
@@ -140,7 +176,8 @@
 }
 
 #pragma mark - FBSDKLoginButtonDelegate
-- (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error{
+- (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error
+{
     NSLog(@"didCompleteWithResult");
     
     __block NSString *username;
@@ -188,22 +225,27 @@
     }
 }
 
-- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
+{
     NSLog(@"loginButtonDidLogOut");
     
     self.imageView.image = nil;
     self.fbUsername.text = @"";
     self.fbEmail.text = @"";
     self.fbUserID.text = @"";
+    self.gender.text = @"";
+    self.birthday.text = @"";
 }
 
-- (BOOL)loginButtonWillLogin:(FBSDKLoginButton *)loginButton{
+- (BOOL)loginButtonWillLogin:(FBSDKLoginButton *)loginButton
+{
     NSLog(@"loginButtonWillLogin");
     return YES;
 }
 
 #pragma mark - IBAction
-- (IBAction)fbShareButtonPressed:(UIButton *)sender {
+- (IBAction)fbShareButtonPressed:(UIButton *)sender
+{
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
     content.contentURL = [NSURL URLWithString:@"https://developers.facebook.com"];
     
@@ -217,7 +259,8 @@
                                     delegate:nil];
 }
 
-- (IBAction)fbWebViewStyleShareButtonPressed:(UIButton *)sender {
+- (IBAction)fbWebViewStyleShareButtonPressed:(UIButton *)sender
+{
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
     content.contentURL = [NSURL URLWithString:@"http://www.myvideo.net.tw/MyVideo/liveChannelIndex.do"];
     content.contentTitle = @"myVideo直播-TVBS新聞台HD-17:00整點新聞";
@@ -247,7 +290,8 @@
     [dialog show];
 }
 
-- (IBAction)fbPhotoShareButtonPressed:(UIButton *)sender {
+- (IBAction)fbPhotoShareButtonPressed:(UIButton *)sender
+{
     UIImage *image = [UIImage imageNamed:@"Suits"];
     
     FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
@@ -262,9 +306,8 @@
     
 }
 
-- (IBAction)fbVideoShareButtonPressed:(UIButton *)sender {
-    
-    
+- (IBAction)fbVideoShareButtonPressed:(UIButton *)sender
+{
     //NSURL *videoURL = [info objectForKey:UIImagePickerControllerReferenceURL];
     NSString *path = [[NSBundle mainBundle]pathForResource:@"emoji zone" ofType:@"mp4"];
     NSURL *videoURL = [NSURL URLWithString:path];
