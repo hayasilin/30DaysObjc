@@ -82,6 +82,40 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //如果曾經用FB登入過，都沒有登出，用此方法可以直接叫出登入者資訊
+    if ([FBSDKAccessToken currentAccessToken])
+    {
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             
+             if (!error)
+             {
+                 NSLog(@"fetched user:%@", result);
+                 
+                 //取得同樣授權此App的Facebook朋友名單
+                 FBSDKGraphRequest *friendsRequest = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me/friends" parameters:nil HTTPMethod:@"GET"];
+                 [friendsRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                     
+                     NSDictionary *friendSummaryDictionary = [result objectForKey:@"summary"];
+                     NSNumber *totalFirendNumber = [friendSummaryDictionary objectForKey:@"total_count"];
+                     NSLog(@"totalFirendNumber = %@", totalFirendNumber);//朋友總數
+                     
+                     NSArray *firendsArray = [result objectForKey:@"data"];//朋友名單
+                     NSLog(@"firendsArray = %@", firendsArray);
+                 }];
+             }
+             else
+             {
+                 NSLog(@"error = %@", error.localizedDescription);
+             }
+         }];
+    }
+}
+
 - (void)createMyLoginButton
 {
     // Add a custom login button to your app
@@ -119,6 +153,7 @@
          else
          {
              NSLog(@"Logged in");
+             
              
              //birthday需要通過fb審查，因此先不使用
              FBSDKGraphRequest *request =
