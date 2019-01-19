@@ -59,8 +59,8 @@
     //以下Custom參數只有在非使用FBSDKShareLinkContent時才能使用，否則會被FBSDK自己從網站Parse的內容蓋過去
     shareContent.contentTitle = @"Custom title";
     shareContent.contentDescription = @"Custom description";
-    shareContent.imageURL = [NSURL URLWithString:@"http://cms.myvideo.net.tw/images/news/ch13/20160811/201608111645399679_300x169.jpg"];
-    shareContent.hashtag = [FBSDKHashtag hashtagWithString:@"#MadeWithHackbook"];
+    shareContent.imageURL = [NSURL URLWithString:@"http://www.example.com/images/xxxxxx.jpg"];
+    shareContent.hashtag = [FBSDKHashtag hashtagWithString:@"#hashtaghere"];
     shareContent.quote = @"Learn quick and simple ways for people to share content from your app or website to Facebook.";
     shareButton.shareContent = shareContent;
     [self.view addSubview:shareButton];
@@ -287,7 +287,7 @@
     //以下Custom參數只有在非使用FBSDKShareLinkContent時才能使用，否則會被FBSDK自己從網站Parse的內容蓋過去
     content.contentTitle = @"Custom title";
     content.contentDescription = @"Custom description";
-    content.imageURL = [NSURL URLWithString:@"http://cms.myvideo.net.tw/images/news/ch13/20160811/201608111645399679_300x169.jpg"];
+    content.imageURL = [NSURL URLWithString:@"http://www.example.com/images/xxxxxx.jpg"];
     
     [FBSDKShareDialog showFromViewController:self
                                  withContent:content
@@ -297,10 +297,10 @@
 - (IBAction)fbWebViewStyleShareButtonPressed:(UIButton *)sender
 {
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    content.contentURL = [NSURL URLWithString:@"http://www.myvideo.net.tw/MyVideo/liveChannelIndex.do"];
-    content.contentTitle = @"myVideo直播-TVBS新聞台HD-17:00整點新聞";
-    content.contentDescription = @"TVBS新聞台以沒有國界，沒有時差為理念，台灣第一個24小時全天侯的新聞性專業頻道，知性多元的專題節目，一步一腳印發現新台灣，世界翻轉中，當掌聲響起";
-    content.imageURL = [NSURL URLWithString:@"http://cms.myvideo.net.tw/images/news/ch13/20160811/201608111645399679_300x169.jpg"];
+    content.contentURL = [NSURL URLWithString:@"http://www.example.com/"];
+    content.contentTitle = @"title_here";
+    content.contentDescription = @"description_here";
+    content.imageURL = [NSURL URLWithString:@"http://www.example.com/images/xxxxxx.jpg"];
 
     FBSDKShareDialog* dialog = [[FBSDKShareDialog alloc] init];
     
