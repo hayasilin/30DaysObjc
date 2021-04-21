@@ -1,6 +1,6 @@
 # 30DaysObjc
 
-##Hello open source community
+## Hello open source community
 
 I'm Kuan-Wei. I don't have any computer sicence degree nor related background but becoming an iOS engineer after learning how to code in one year.
 I only have the entry level of iOS coding skill and still want to learn more and share more. That's why I'm sharing this project to the community.
